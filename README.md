@@ -23,7 +23,7 @@ Installation
 Clone the repository to your local machine:
 
 
-git clone https://github.com/your-username/todo-list-app.git
+git clone https://github.com/razalrahmanp/todo-app.git
 cd todo-list-app
 Install dependencies for both the client and server:
 
