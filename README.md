@@ -59,13 +59,13 @@ DELETE /api/tasks/:id: Delete a task.
 Project Structure
 
 todo-list-app/
-  ├── client/             # Front-end React application
-  │   ├── src/            # Source code for the client
-  │   └── ...             # Other client files
-  ├── server/             # Node.js and Express back end
-  │   ├── app.js          # Main server file
-  │   ├── routes/         # API routes
-  │   └── data/           # JSON file for task data
+  ├── client/              # Front-end React application
+  │   ├── src/             # Source code for the client
+  │   └── ...              # Other client files
+  ├── server/              # Node.js and Express back end
+  │   ├── app.js           # Main server file
+  │   ├── routes/          # API routes
+  │   └── data/            # JSON file for task data
   └── ...
 
      
@@ -75,6 +75,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
                                                    
                                                     Acknowledgments
-                                                    
+
 Create React App for bootstrapping the React application.
 Express.js for the Node.js server.
