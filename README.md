@@ -48,11 +48,14 @@ cd client
 npm start
 The client should open in your default web browser at http://localhost:3000.
 
+
                                                     API Endpoints
+
 GET /api/tasks: Retrieve all tasks.
 POST /api/tasks: Create a new task.
 PUT /api/tasks/:id: Update a task's completion status.
 DELETE /api/tasks/:id: Delete a task.
+
 Project Structure
 
 todo-list-app/
@@ -65,10 +68,13 @@ todo-list-app/
   │   └── data/           # JSON file for task data
   └── ...
 
+     
                                                         License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
+                                                   
                                                     Acknowledgments
+                                                    
 Create React App for bootstrapping the React application.
 Express.js for the Node.js server.
