@@ -59,12 +59,13 @@ DELETE /api/tasks/:id: Delete a task.
 Project Structure
 
 todo-list-app/
-  ├── client/              # Front-end React application
-  │   ├── src/             # Source code for the client
-  │   └── ...              # Other client files
-  ├── server/              # Node.js and Express back end
-  │   ├── app.js           # Main server file
-  │   ├── routes/          # API routes
+
+  ├── client/              
+  │   ├── src/             
+  │   └── ...              
+  ├── server/              
+  │   ├── app.js           
+  │   ├── routes/          
   │   └── data/            # JSON file for task data
   └── ...
 
