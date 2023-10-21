@@ -1,26 +1,20 @@
 import React from 'react';
+import Task from './Task';
 import './TaskList.css'; 
-
-function TaskList({ tasks, toggleComplete, deleteTask }) {
+const TaskList = ({ tasks, toggleComplete, deleteTask, editTask }) => {
   return (
     <ul>
       {tasks.map((task) => (
-        <li key={task.id}>
-          <span
-            style={{
-              textDecoration: task.completed ? 'line-through' : 'none',
-            }}
-          >
-            {task.title}
-          </span>
-          <button onClick={() => toggleComplete(task.id, !task.completed)}>
-            {task.completed ? 'Mark Incomplete' : 'Mark Complete'}
-          </button>
-          <button onClick={() => deleteTask(task.id)}>Delete</button>
-        </li>
+        <Task
+          key={task.id}
+          task={task}
+          toggleComplete={toggleComplete}
+          deleteTask={deleteTask}
+          editTask={editTask}
+        />
       ))}
     </ul>
   );
-}
+};
 
 export default TaskList;

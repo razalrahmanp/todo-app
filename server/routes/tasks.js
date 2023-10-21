@@ -10,7 +10,9 @@ router.post('/', (req, res) => {
     const newTask = {
         id: tasks.length + 1,
         title: req.body.title,
+        description: req.body.description,
         completed: false,
+        dueDate: req.body.dueDate,
     };
     tasks.push(newTask);
     saveTasksToJSON(); // Save the updated tasks array to JSON
@@ -25,16 +27,18 @@ router.get('/', (req, res) => {
 // Update a task (mark as completed or edit)
 router.put('/:id', (req, res) => {
     const taskId = parseInt(req.params.id);
-    const updatedTask = req.body;
-    const index = tasks.findIndex(task => task.id === taskId);
+    const updatedTask = tasks.find((task) => task.id === taskId);
 
-    if (index === -1) {
-        res.status(404).json({ error: 'Task not found' });
-    } else {
-        tasks[index] = updatedTask;
-        saveTasksToJSON(); // Save the updated tasks array to JSON
-        res.json(updatedTask);
+    if (!updatedTask) {
+        return res.status(404).json({ message: 'Task not found' });
     }
+
+    updatedTask.title = req.body.title || updatedTask.title;
+    updatedTask.description = req.body.description || updatedTask.description;
+    updatedTask.dueDate = req.body.dueDate || updatedTask.dueDate;
+    updatedTask.completed = req.body.completed || updatedTask.completed;
+
+    return res.json(updatedTask);
 });
 
 // Delete a task by ID

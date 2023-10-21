@@ -26,15 +26,21 @@ function App() {
         }
     };
 
-    const addTask = async() => {
+    const addTask = async(title, description, dueDate) => {
         try {
-            const response = await axios.post('http://localhost:5000/api/tasks', newTask); // Adjust the URL to your server
+            const response = await axios.post('http://localhost:5000/api/tasks', {
+                title,
+                description,
+                dueDate,
+            });
+
             setTasks([...tasks, response.data]);
-            setNewTask({ title: '' });
+            setNewTask({ title: '', description: '', dueDate: '' });
         } catch (error) {
             console.error('Error adding a task:', error);
         }
     };
+
 
     const toggleComplete = async(taskId, completed) => {
         try {
@@ -60,6 +66,34 @@ function App() {
             console.error('Error deleting a task:', error);
         }
     };
+    const editTask = async(taskId, editedTitle, editedDescription, editedDueDate) => {
+        try {
+            // Define the data to send to the server for the update
+            const updatedData = {
+                title: editedTitle,
+                description: editedDescription,
+                dueDate: editedDueDate,
+            };
+
+            // Send a PUT request to update the task on the server
+            await axios.put(`http://localhost:5000/api/tasks/${taskId}`, updatedData); // Adjust the URL to your server
+
+            // After a successful response from the server, update the tasks in the state
+            const updatedTasks = tasks.map((task) => {
+                if (task.id === taskId) {
+                    task.title = editedTitle;
+                    task.description = editedDescription;
+                    task.dueDate = editedDueDate;
+                }
+                return task;
+            });
+
+            setTasks(updatedTasks);
+        } catch (error) {
+            console.error('Error editing a task:', error);
+        }
+    };
+
 
     useEffect(() => {
         fetchTasks();
@@ -79,6 +113,7 @@ function App() {
         TaskList tasks = { tasks }
         toggleComplete = { toggleComplete }
         deleteTask = { deleteTask }
+        editTask = { editTask }
         /> < /
         motion.div >
     );
